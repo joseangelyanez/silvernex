@@ -1,0 +1,55 @@
+$breakpoints: (
+	xs: 360px,
+	sm: 480px,
+	md: 600px,
+	lg: 768px,
+	xl: 1024px
+);
+
+@mixin portrait {
+	@media (orientation: portrait) {
+		@content;
+	}
+}
+
+@mixin landscape {
+	@media (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin down($size) {
+	@media (max-width: map-get($breakpoints, $size)) {
+		@content;
+	}
+}
+
+@mixin up($size) {
+	@media (min-width: map-get($breakpoints, $size)) {
+		@content;
+	}
+}
+
+@mixin between($min, $max) {
+	@media (min-width: map-get($breakpoints, $min)) and (max-width: map-get($breakpoints, $max)) {
+		@content;
+	}
+}
+
+@mixin phone {
+	@include down(sm) {
+		@content;
+	}
+}
+
+@mixin phone-large {
+	@include down(md) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@include between(md, lg) {
+		@content;
+	}
+}
