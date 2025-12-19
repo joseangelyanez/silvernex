@@ -12,6 +12,7 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		background-color: var(--color-accent-background);
 	}
 
 	a {
@@ -27,22 +28,32 @@
 	}
 
 	main {
-		height: 100vh;
+		height: 100%;
+	}
+
+	div.close_link {
+		display: none;
+	}
+
+	[data-action=menu-button] {
+		display: none;
 	}
 
 	@include breakpoints.phone {
-		@include breakpoints.landscape {
-			color: orange;
-		}
-
 		@include breakpoints.portrait {
+			a.home_link {
+				flex: unset
+			}
+
 			nav.closed {
 				[data-size=medium] {
 					display: none;
 				}
+				
 				[data-size=small] {
 					display: block;
 				}
+
 				[data-action=menu-button] {
 					display: block;
 				}
@@ -55,6 +66,7 @@
 				[data-size=small], [data-size=medium] {
 					display: block;
 				}
+
 				[data-action=menu-button] {
 					display: none;
 				}
@@ -63,7 +75,7 @@
 				top: 0px;
 				flex-direction: column;
 				justify-content: center;
-				height: 100vh;
+				height: 100%;
 				width: 100%;
 				padding: 300px 0px;
 
@@ -82,13 +94,10 @@
 					a {
 						width: 24px;
 						height: 24px;
-						flex: unset;
 						display: block;
 					}
 				}
 			}
-
-			
 		}		
 	}
 }
