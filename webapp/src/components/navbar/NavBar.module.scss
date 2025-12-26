@@ -53,8 +53,20 @@
 		display: none;
 	}
 
-	@include breakpoints.tablet {
+	@include breakpoints.xs {
 		nav {
+			border-radius: 0px;
+			border-color: white;
+			border: 0px;
+			border-bottom: 1px solid white;
+		}
+	}
+
+	@include breakpoints.sm {
+		nav {
+			border: 0px;
+			border-bottom: 1px;
+			border-radius: 0px;
 		}
 	}
 
