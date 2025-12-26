@@ -1,9 +1,9 @@
 $breakpoints: (
-	xs: 360px,
+	xs: 0px,
 	sm: 480px,
-	md: 600px,
-	lg: 768px,
-	xl: 1024px
+	md: 700px,
+	lg: 1000px,
+	xl: 1400px
 );
 
 @mixin portrait {
@@ -50,6 +50,36 @@ $breakpoints: (
 
 @mixin tablet {
 	@include between(md, lg) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@include up(xl) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@include between(lg, xl) {
+		@content;
+	}
+}
+
+@mixin md {
+	@include between(md, lg) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@include between(sm, md) {
+		@content;
+	}
+}
+
+@mixin xs {
+	@include between(xs, sm) {
 		@content;
 	}
 }

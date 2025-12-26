@@ -1,29 +1,89 @@
 'use client'
 
 import Image from "next/image";
-import styles from "./page.module.scss";
-import { Icon } from "./ui/components/Icon";
+import Icon, { IconNames } from "../components/icon/Icon";
 import { useState } from "react";
+import NavBar from "@/components/navbar/NavBar";
+import { Card } from "@/components/card/Card";
+import { PostItem } from "@/components/post-item/PostItem";
+import PostBox from "@/components/post-box/PostBox";
+import PostList from "@/components/post-list/PostList";
+import Layout from "@/components/layout/Layout";
+import { Tile } from "@/components/tile/Tile";
+import { ProfileCard } from "@/components/profile-card/ProfileCard";
+import { ActionCard } from "@/components/action-card/ActionCard";
 
-export default function Home() {	
-	const [menuIsOpen, setMenuIsOpen] = useState(false); 
+export default function Home() {
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
 	return (
-		<main className={styles.main}>
-			<nav className={menuIsOpen ? styles.open : styles.closed}>
-				<a href="#" data-action="menu-button" onClick={() => setMenuIsOpen(true)}>
-					<Icon name="menu"></Icon>
-				</a>
-				<a href="#" className={styles.home_link} data-size="medium">Home</a>
-				<a href="#" data-size="medium">Shop</a>
-				<a href="#" data-size="medium">About</a>
-				<a href="#" data-size="small">Login</a>
-				<div className={styles.close_link}>
-					<a href="#" onClick={() => setMenuIsOpen(false)}>
-						<Icon name="close"></Icon>
-					</a>
-				</div>
-			</nav>
-		</main>
+		<>
+			<Layout
+				top={
+					<header>
+						<NavBar></NavBar>
+					</header>
+				}
+
+				bar1={
+					<>
+						<Tile>
+							<ProfileCard name="Jose Yanez"
+								backgroundImageUrl="/images/photo1.png"
+								location="Davenport, FL"
+								mainImageUrl="/images/profile-01.png"
+								secondaryImageUrls={["/images/profile.png"]}
+								subtitle="Vicky's owner"
+							>
+							</ProfileCard>
+						</Tile>
+						<Tile>
+							<ActionCard
+								title="Pet Friendly Places"
+								subtitle="We're looking for great Pet Friendly Places"
+								actionText="Suggest a Place"
+								iconName={IconNames.plus}>
+							</ActionCard>
+						</Tile>
+					</>
+				}
+
+				bar2={<><Tile>
+					<ActionCard
+						title="Friend Suggestion"
+						subtitle="You may also know Burpee Mussi"
+						actionText="Add"
+						iconName={IconNames.plus}
+					>
+					</ActionCard>
+
+				</Tile>
+					<Tile>
+						<h3 style={{ padding: 10 }}>Read our Blog</h3>
+					</Tile>
+				</>}
+
+				bar3={
+					<NavBar docked={true}></NavBar>
+				}
+			>
+				<main>
+					<PostList>
+						<PostBox></PostBox>
+						<PostItem commented={true} liked={true} message="Someone liked this post" likes={20} comments={['Hello!']}>
+							<Card url="/images/profile.png"></Card>
+						</PostItem>
+
+						<PostItem commented={false} liked={false} message="Someone liked this post" likes={20} comments={['Hello!']}>
+							<Card url="/images/profile.png"></Card>
+						</PostItem>
+
+						<PostItem commented={false} liked={true} message="Someone liked this post" likes={20} comments={['Hello!']}>
+							<Card url="/images/profile.png"></Card>
+						</PostItem>
+					</PostList>
+				</main>
+			</Layout>
+		</>
 	);
 }

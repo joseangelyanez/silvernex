@@ -1,0 +1,11 @@
+$border-width: 1px;
+
+.container {
+	display: flex;
+	align-items: center;
+
+	&:hover {
+		cursor: pointer;
+		color: #20cc98;
+	}
+}

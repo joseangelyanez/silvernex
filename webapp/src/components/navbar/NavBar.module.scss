@@ -1,0 +1,143 @@
+@use "@/styles/_breakpoints" as breakpoints;
+
+.main {
+	/* Color */
+	color: var(--color-accent-foreground);
+
+	/* Layout*/
+	nav {
+		box-sizing: border-box;
+		height: 3em;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		background-color: #ffffff88;
+		border: 1px solid white;
+		border-top: 0px;
+		z-index: 99999;
+		backdrop-filter: blur(10px);
+		overflow: hidden;
+		font-size: 14px;
+		border-radius: 0px 0px 10px 10px;
+	}
+
+	.main.docked {
+		nav {
+			flex-direction: column;
+		}
+	}
+
+	a {
+		margin: var(--margin-standard);
+	}
+
+	a.close_link {
+		display: none;
+	}
+
+	a.home_link {
+		flex: 1
+	}
+
+	main {
+		height: 100%;
+	}
+
+	div.close_link {
+		display: none;
+		z-index: 3001;
+	}
+
+	[data-action=menu-button] {
+		display: none;
+	}
+
+	@include breakpoints.tablet {
+		nav {
+		}
+	}
+
+	@include breakpoints.phone {
+		@include breakpoints.landscape {
+
+		}
+
+		@include breakpoints.portrait {
+			a.home_link {
+				flex: unset
+			}
+
+			nav.closed {
+				[data-size=medium] {
+					display: none;
+				}
+
+				[data-size=small] {
+					display: block;
+				}
+
+				[data-action=menu-button] {
+					display: block;
+					flex: 1;
+				}
+
+				div.close_link {
+					display: none;
+				}
+			}
+
+			nav.open {
+
+				[data-size=small],
+				[data-size=medium] {
+					display: block;
+				}
+
+				[data-action=menu-button] {
+					display: none;
+				}
+
+				position: fixed;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+
+				top: 0px;
+				padding: 300px 0px;
+				height: unset;
+
+				div.close_link {
+					display: inline;
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					width: 100vw;
+					z-index: 2000;
+					height: 48px;
+					display: flex;
+					align-items: center;
+					justify-content: end;
+
+					a {
+						width: 24px;
+						height: 24px;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+body:has(nav.open) {
+	overflow: hidden;
+}
+
+header:has(nav.closed) {
+	position: sticky;
+	top: 0;
+	z-index: 99999;
+}

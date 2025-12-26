@@ -1,0 +1,48 @@
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	max-width: 6em;
+
+	svg {
+		width: 628px
+	}
+
+	&:hover {
+		.image2 {
+			translate: 30px;
+			background:
+			linear-gradient(135deg, rgb(238, 255, 0), rgb(35, 97, 167)) border-box;
+		}
+	}
+
+	img {
+		object-fit: cover;
+	}
+
+	.image1 {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		border: 4px solid transparent;
+		grid-column: 1 / 3;
+		grid-row: 1 / 2;
+		background:
+			linear-gradient(135deg, orange, rgb(148, 255, 182)) border-box;
+	}
+
+	.image2 {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		border: 4px solid transparent;
+		grid-column: 2 / 4;
+		grid-row: 1 / 2;
+		translate: 2px;
+		transition: 0.2s ease-out;
+		z-index: -2;
+		background:
+			linear-gradient(135deg, rgb(0, 255, 64), rgb(66, 150, 245)) border-box;
+	}
+}

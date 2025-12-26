@@ -1,0 +1,149 @@
+@use "@/styles/_breakpoints" as breakpoints;
+
+
+.container {
+	display: grid;
+	grid-template-areas: 
+		'top top top'
+		'bar1 content bar2';
+	width: min(1400px, 80%);
+	align-items:start;
+	align-content: center;
+	margin-right: auto;
+    margin-left: auto;
+	gap: 10px;
+}
+
+.top {
+	flex: 1;
+	top: 0px;
+	position: sticky;
+	z-index: 99999;
+}
+
+.bar1 {
+	position: sticky;
+	top: 53px;
+}
+
+.bar2 {
+	position: sticky;
+	top: 53px;
+}
+
+.barContent {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.content {
+	min-width: min(500px, 100%);
+	flex: 1;
+}
+
+@include breakpoints.xl {
+	.container {
+		grid-template-areas: 
+			'top top top'
+			'bar1 content bar2';
+	}
+	.bar1 {
+		display: flex;
+	}
+	.bar2 {
+		display: flex;
+	}
+	.bar3 {
+		display: none;
+	}
+}
+
+@include breakpoints.lg {
+	.container {
+		grid-template-areas: 
+			'top top'
+			'bar1 content';
+	}
+	.bar2 {
+		display: none;
+	}
+	.bar3 {
+		display: none;
+	}
+}
+
+@include breakpoints.md {
+	.container {
+		grid-template-areas: 
+			'top'
+			'content';
+	}
+	.bar1 {
+		display: none;
+	}
+	.bar2 {
+		display: none;
+	}
+	.bar3 {
+		display: none;
+	}
+}
+
+@include breakpoints.sm { 
+	
+	.container {
+		grid-template-areas: 
+			'top'
+			'content';
+	}
+	.container {
+		margin-left: unset!important;
+		margin-right: unset!important;
+		width: unset!important;
+	}
+	.top {
+		nav {
+			border-radius: 0px;
+		}
+	}
+	.bar1 {
+		display: none;
+	}
+	.bar2 {
+		display: none;
+	}
+	.bar3 {
+		display: none;
+	}
+}
+
+@include breakpoints.xs {
+	.container {
+		grid-template-areas: 
+			'top'
+			'content';
+	}
+	.container {
+		margin-left: unset!important;
+		margin-right: unset!important;
+		width: unset!important;
+		gap: 0px !important;
+	}
+	.top {
+		nav {
+			border-radius: 0px;
+			border-color: white;
+		}
+
+	}
+	.bar1 {
+		display: none;
+	}
+	.bar2 {
+		display: none;
+	}
+	.bar3 {
+		display: none;
+	}
+}
