@@ -5,13 +5,27 @@ import Icon, { IconNames } from '../icon/Icon';
 export enum ButtonTypes {
 	Regular,
 	TextBox,
-	Icon
+	Icon,
+	LoadMore
 }
 
 export interface IButtonProps {
 	children: ReactNode,
 	iconName?: string,
 	type?: ButtonTypes
+}
+
+function RenderLoadMore(props: IButtonProps) {
+	const { children } = props;
+	return <div className={styles.loadMore}>
+		<div className={styles.leftHandle}>
+			<hr />
+		</div>
+		<button className={styles.regular}>{children}</button>
+		<div className={styles.rightHandle}>
+			<hr />
+		</div>
+	</div>
 }
 
 function RenderRegularButton(props: IButtonProps) {
@@ -27,7 +41,7 @@ function RenderTextBoxButton(props: IButtonProps) {
 function RenderIconButton(props: IButtonProps) {
 	const { children, iconName } = props;
 	return <div className={styles.icon}>
-		<Icon name={iconName ?? IconNames.favorite}></Icon>
+		<Icon name={iconName ?? IconNames.favorite} marginRight='10px'></Icon>
 		<button className={styles.button}>
 		{children}
 		</button>
@@ -45,5 +59,7 @@ export default function Button(props: IButtonProps) {
 			return RenderIconButton(props);
 		case ButtonTypes.TextBox:
 			return RenderTextBoxButton(props);
+		case ButtonTypes.LoadMore:
+			return RenderLoadMore(props);
 	}
 }

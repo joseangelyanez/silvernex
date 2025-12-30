@@ -14,21 +14,28 @@ export class IconNames {
 	static plus = 'plus';
 	static notifications = 'notifications';
 	static groups = 'groups';
+	static send = 'send';
 }
 
 export interface IIconProps {
 	name: string;
 	size?: string;
 	marginRight?: string;
+	marginLeft?: string;
 	filled?: boolean;
 	color?: string
 }
 
 export default function Icon(props: IIconProps) {
-	const { size = "24px", name, marginRight = "5px", filled = false, color = "inherit" } = props;
+	const { size = "24px",
+		name, 
+		marginLeft,
+		marginRight, 
+		filled = false, 
+		color = "inherit" } = props;
 
 	return (
-		<svg className={styles.icon} style={{ width: size, height: size, marginRight: marginRight, color: color }}>
+		<svg className={styles.icon} style={{ width: size, height: size, marginRight: marginRight, marginLeft: marginLeft, color: color }}>
 			<use href={`/icons.svg#${filled ? name + FilledSuffix : name}`} />
 		</svg>
 	);

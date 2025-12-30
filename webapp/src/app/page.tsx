@@ -12,6 +12,7 @@ import Layout from "@/components/layout/Layout";
 import { Tile } from "@/components/tile/Tile";
 import { ProfileCard } from "@/components/profile-card/ProfileCard";
 import { ActionCard } from "@/components/action-card/ActionCard";
+import Button, { ButtonTypes } from "@/components/button/Button";
 
 export default function Home() {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -70,6 +71,7 @@ export default function Home() {
 				<main>
 					<PostList>
 						<PostBox></PostBox>
+						<Button type={ButtonTypes.LoadMore}>10 new Updates</Button>
 						<PostItem commented={true} liked={true} message="Someone liked this post" likes={20} comments={['Hello!']}>
 							<Card url="/images/profile.png"></Card>
 						</PostItem>

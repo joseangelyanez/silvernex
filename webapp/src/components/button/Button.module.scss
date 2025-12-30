@@ -1,6 +1,6 @@
 
 .textBox {
-	border: 1px solid var(--color-accent-foreground);
+	border: 1px solid #d5d5d5;
 	color: var(--color-accent-foreground);
 	background: #f9f9f9;
 	padding: 10px;
@@ -33,3 +33,31 @@
 	}
 }
 
+.loadMore {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	hr {
+		height: 1px;
+		border: 0px;
+		background-color: #d5d5d5;
+	}
+
+	.leftHandle {
+		flex: 1;
+		padding: 20px;
+	}
+
+	button {
+		color: grey;
+		width: 200px;
+		border: 0px;
+		font-weight: bold;
+	}
+
+	.rightHandle {
+		flex: 1;
+		padding: 20px;
+	}
+}

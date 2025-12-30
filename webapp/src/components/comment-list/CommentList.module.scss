@@ -1,0 +1,13 @@
+.container {
+	display: grid;
+	grid-template-columns: 
+		50px auto;
+	grid-auto-rows: auto;
+	width: 100%;
+	align-items:start;
+	align-content: center;
+	margin-right: auto;
+    margin-left: auto;
+	gap: 10px;
+	box-sizing: border-box;
+}
